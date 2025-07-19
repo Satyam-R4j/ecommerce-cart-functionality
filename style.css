@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-  background-color: #1e1e1e;
+  background-color: #181818;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px #00ff88;
@@ -28,7 +28,8 @@ body {
   max-width: 600px;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #00ff88;
 }
 
@@ -58,6 +59,20 @@ h1, h2 {
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+}
+
+button {
+  background-color: #00cc66;
+  color: #121212;
+
+  border: none;
+  padding: 8px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover {
+  background-color: #66ffb3;
 }
 
 .product-item button:hover {
@@ -114,4 +129,18 @@ h1, h2 {
 
 .hidden {
   display: none;
+}
+
+.product {
+  margin: 10px;
+  color: white;
+  background: #252424;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-radius: 5px;
+}
+span {
+  padding-right: 40px;
 }
