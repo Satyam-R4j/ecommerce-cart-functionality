@@ -33,16 +33,61 @@ document.addEventListener('DOMContentLoaded', () =>
     });
 
 
-    productList.addEventListener('click',(e)=>{
+    productList.addEventListener('click', (e) =>
+    {
 
-        if(e.target.tagName === 'BUTTON')
+        if (e.target.tagName === 'BUTTON')
         {
             console.log("clicked");
-            console.log(e.target.getAttribute('data-id'))
+            const productId = parseInt(e.target.getAttribute('data-id'))
+            const product = products.find(p => p.id === productId)
+            addToCart(product)
 
-            
         }
-        
+
+        function addToCart(product)
+        {
+            cart.push(product)
+            renderCart()
+        }
+
+        function renderCart()
+        {
+            console.log("clicked");
+            let totalPrice = 0
+            cartItems.innerHTML = ""
+            if (cart.length)
+            {
+
+                emptyCartMessage.classList.add('hidden')
+                cartTotalMessage.classList.remove('hidden')
+                cart.forEach((item, index) =>
+                {
+                    totalPrice += item.price
+                    console.log(totalPrice);
+
+                    const cartItem = document.createElement('div')
+                    cartItem.classList.add('cart-item')
+                    cartItem.innerHTML = `
+                        ${item.name} - $${item.price}
+                    `
+
+                    cartItems.appendChild(cartItem)
+                    totalPriceDisplay.textContent = `$${totalPrice.toFixed(2)}`
+                })
+            }
+            else
+            {
+                totalPriceDisplay.textContent = `$0.00`
+                emptyCartMessage.classList.remove('hidden')
+            }
+        }
+
+        checkOutBtn.addEventListener('click',()=>{
+            cart.length = 0
+            alert("Checkout successfully")
+            renderCart()
+        })
     })
 
 })
